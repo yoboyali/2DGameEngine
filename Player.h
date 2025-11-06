@@ -18,17 +18,17 @@ typedef struct bullet
     Vector2 velocity;
     bool active;
 }bullet;
-typedef enum Animationtype
+typedef enum AnimationType
 {
     Repeating = 1,
     OneShot = 2,
-}Animationtype;
+}AnimationType;
 typedef struct Animation
 {
     int first;
     int last;
     int current;
-    Animationtype type;
+    AnimationType type;
     float speed;
     float durationLeft;
 }Animation;
@@ -64,7 +64,7 @@ typedef enum Direction
     void InitializeVariables();
 
     void Animation_update(Animation *self);
-    Rectangle animation_frame(Animation *slef , Direction Direction);
+    Rectangle animation_frame(Animation *self , Direction Direction);
     Direction calculateDirection(Vector2 input);
     void ProjectileSpawn(Vector2 input);
     void UpdateBullets();
@@ -73,7 +73,7 @@ typedef enum Direction
 public: Player();
         ~Player();
         void Draw();
-        void Getinput(Vector2 input , bool shooting);
+        void GetInput(Vector2 input , bool shooting);
 };
 
 

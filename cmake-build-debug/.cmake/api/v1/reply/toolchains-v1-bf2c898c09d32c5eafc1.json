@@ -10,19 +10,19 @@
 				{
 					"includeDirectories" : 
 					[
-						"/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/c++/v1",
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX26.1.sdk/usr/include/c++/v1",
 						"/Library/Developer/CommandLineTools/usr/lib/clang/17/include",
-						"/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include",
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX26.1.sdk/usr/include",
 						"/Library/Developer/CommandLineTools/usr/include"
 					],
 					"linkDirectories" : 
 					[
-						"/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/lib",
-						"/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/lib/swift"
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX26.1.sdk/usr/lib",
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX26.1.sdk/usr/lib/swift"
 					],
 					"linkFrameworkDirectories" : 
 					[
-						"/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/System/Library/Frameworks"
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX26.1.sdk/System/Library/Frameworks"
 					],
 					"linkLibraries" : 
 					[
@@ -30,7 +30,7 @@
 					]
 				},
 				"path" : "/Library/Developer/CommandLineTools/usr/bin/c++",
-				"version" : "17.0.0.17000013"
+				"version" : "17.0.0.17000404"
 			},
 			"language" : "CXX",
 			"sourceFileExtensions" : 

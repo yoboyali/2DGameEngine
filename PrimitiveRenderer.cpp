@@ -23,7 +23,6 @@ void PrimitiveRenderer::primDraw(int x0 , int x1 , int y0 , int y1)
     float x = x1 - x0;
     float y = y1 - y0;
     slope = y / x;
-    //std::cout<<slope<<std::endl;
     float temp = y0;
     for (int i = x0 ; i < x1 ; i++) {
         DrawPixel(i , temp , BLACK );
@@ -32,7 +31,7 @@ void PrimitiveRenderer::primDraw(int x0 , int x1 , int y0 , int y1)
     }
 }
 
-void PrimitiveRenderer::primDrawCirlce(int x, int y, int Radius)
+void PrimitiveRenderer::primDrawCircle(int x, int y, int Radius)
 {
 
     for (int i = 0 ; i < 90 ;i++) {
@@ -52,7 +51,7 @@ void PrimitiveRenderer::primDrawCirlce(int x, int y, int Radius)
     }
 }
 
-void PrimitiveRenderer::primDrawElipse(int x, int y, int Rx, int Ry)
+void PrimitiveRenderer::primDrawEllipse(int x, int y, int Rx, int Ry)
 {
     for (int i = 0 ; i < 90 ;i++) {
         int X = x + Rx *cos(i* DEG2RAD);

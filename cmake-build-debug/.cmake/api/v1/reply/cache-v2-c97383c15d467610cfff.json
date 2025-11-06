@@ -11,7 +11,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/alihamdy/Desktop/2DGameEngine /cmake-build-debug"
+			"value" : "/Users/alihamdy/Desktop/2DGameEngine /2DGameEngine/cmake-build-debug"
 		},
 		{
 			"name" : "2DGameEngine__IS_TOP_LEVEL",
@@ -35,7 +35,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/alihamdy/Desktop/2DGameEngine "
+			"value" : "/Users/alihamdy/Desktop/2DGameEngine /2DGameEngine"
 		},
 		{
 			"name" : "CMAKE_ADDR2LINE",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/alihamdy/Desktop/2DGameEngine /cmake-build-debug"
+			"value" : "/Users/alihamdy/Desktop/2DGameEngine /2DGameEngine/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -447,7 +447,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/alihamdy/Desktop/2DGameEngine /cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/Users/alihamdy/Desktop/2DGameEngine /2DGameEngine/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -507,7 +507,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/alihamdy/Desktop/2DGameEngine "
+			"value" : "/Users/alihamdy/Desktop/2DGameEngine /2DGameEngine"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -739,7 +739,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk"
+			"value" : "/Library/Developer/CommandLineTools/SDKs/MacOSX26.1.sdk"
 		},
 		{
 			"name" : "CMAKE_PLATFORM_INFO_INITIALIZED",

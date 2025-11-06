@@ -5,7 +5,7 @@
 #include "Engine.h"
 #include "PrimitiveRenderer.h"
 #include "Player.h"
-#include "iostream"
+#include <iostream>
 #define FrameRate 60
 #define WindowWidth 1200
 #define WindowHeight 800
@@ -67,7 +67,7 @@ void Engine::event()
     if (IsKeyDown(KEY_J)) {
         shooting = true;
     }
-    FemaleAdventurer->Getinput(input , shooting);
+    FemaleAdventurer->GetInput(input , shooting);
     shooting =false;
 
 }

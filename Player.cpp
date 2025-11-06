@@ -14,11 +14,11 @@
 
 void Player::InitializeVariables()
 {
-    player_idle_texture = LoadTexture("/Users/alihamdy/CLionProjects/OOP4/Sprites/Idle_Gun.png");
-    player_walk_texture = LoadTexture("/Users/alihamdy/CLionProjects/OOP4/Sprites/walk_aiming.png");
-    player_walk_ShootTexture =LoadTexture("/Users/alihamdy/CLionProjects/OOP4/Sprites/walk_Shooting.png");
-    player_shoot_texture = LoadTexture("/Users/alihamdy/CLionProjects/OOP4/Sprites/Shooting.png");
-    Death_texture = LoadTexture("/Users/alihamdy/CLionProjects/OOP4/Sprites/death_Gun.png");
+    player_idle_texture = LoadTexture("Sprites/Idle_Gun.png");
+    player_walk_texture = LoadTexture("Sprites/walk_aiming.png");
+    player_walk_ShootTexture =LoadTexture("Sprites/walk_Shooting.png");
+    player_shoot_texture = LoadTexture("Sprites/Shooting.png");
+    Death_texture = LoadTexture("Sprites/death_Gun.png");
     RepeatingAnimations = (Animation){.first = 0 , .last = 7 , .current = 0 , .speed = 0.1 , .durationLeft = 0.1     , .type = Repeating};
     OneShotAnimation =(Animation){.first = 0 , .last = 7 , .current = 0 , .speed = 0.1 , .durationLeft = 0.1 , .type = OneShot};
     PlayerDirection = Down;
@@ -102,7 +102,7 @@ void Player::Draw()
     update();
    //
     DrawTexturePro(background , {0 , 0 ,480 ,320} ,{0 ,0, 1200 , 800} , {0,0} , 0.0 , WHITE);
-    PrimDraw.primDrawCirlce(PositionX + 100 , PositionY + 100 , 30);
+    PrimDraw.primDrawCircle(PositionX + 100 , PositionY + 100 , 30);
     if (Shooting && !walking &&!dead) {
         DrawTexturePro(player_shoot_texture ,animation_frame(&RepeatingAnimations , PlayerDirection) ,{PositionX , PositionY , PlayerDrawSize , PlayerDrawSize } , {0,0} , 0.0 ,WHITE);
     }
@@ -128,7 +128,7 @@ void Player::update()
 
 }
 
-void Player::Getinput(Vector2 input , bool shooting)
+void Player::GetInput(Vector2 input , bool shooting)
 {
 PlayerInput.x = input.x;
 PlayerInput.y = input.y;

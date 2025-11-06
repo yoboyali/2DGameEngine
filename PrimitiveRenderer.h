@@ -14,8 +14,8 @@ PrimitiveRenderer();
 int x1 , x0 , y1 , y0 ;
 float slope;
 void primDraw(int x0 ,  int x1 ,int y0 ,int y1);
-void primDrawCirlce(int x , int y , int Radius);
-void primDrawElipse(int x , int y , int Rx , int Ry);
+void primDrawCircle(int x , int y , int Radius);
+void primDrawEllipse(int x , int y , int Rx , int Ry);
 void initVariables();
 };
 
