@@ -25,6 +25,8 @@ add_executable(${PROJECT_NAME}
         Player.h
         Logger.cpp
         Logger.h
+        TileMap.cpp
+        TileMap.h
         # add more cpp files here if needed
 )
 

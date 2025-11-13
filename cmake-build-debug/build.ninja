@@ -84,6 +84,13 @@ build CMakeFiles/2DGameEngine_.dir/Logger.cpp.o: CXX_COMPILER__2DGameEngine__uns
   OBJECT_DIR = CMakeFiles/2DGameEngine_.dir
   OBJECT_FILE_DIR = CMakeFiles/2DGameEngine_.dir
 
+build CMakeFiles/2DGameEngine_.dir/TileMap.cpp.o: CXX_COMPILER__2DGameEngine__unscanned_Debug /Users/alihamdy/Desktop/2DGameEngine$ /2DGameEngine/TileMap.cpp || cmake_object_order_depends_target_2DGameEngine_
+  DEP_FILE = CMakeFiles/2DGameEngine_.dir/TileMap.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.1.sdk -fcolor-diagnostics
+  INCLUDES = -I"/Users/alihamdy/Desktop/2DGameEngine /2DGameEngine/raylib/src"
+  OBJECT_DIR = CMakeFiles/2DGameEngine_.dir
+  OBJECT_FILE_DIR = CMakeFiles/2DGameEngine_.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target 2DGameEngine_
@@ -92,7 +99,7 @@ build CMakeFiles/2DGameEngine_.dir/Logger.cpp.o: CXX_COMPILER__2DGameEngine__uns
 #############################################
 # Link the executable 2DGameEngine_
 
-build 2DGameEngine_: CXX_EXECUTABLE_LINKER__2DGameEngine__Debug CMakeFiles/2DGameEngine_.dir/main.cpp.o CMakeFiles/2DGameEngine_.dir/Engine.cpp.o CMakeFiles/2DGameEngine_.dir/PrimitiveRenderer.cpp.o CMakeFiles/2DGameEngine_.dir/Player.cpp.o CMakeFiles/2DGameEngine_.dir/Logger.cpp.o
+build 2DGameEngine_: CXX_EXECUTABLE_LINKER__2DGameEngine__Debug CMakeFiles/2DGameEngine_.dir/main.cpp.o CMakeFiles/2DGameEngine_.dir/Engine.cpp.o CMakeFiles/2DGameEngine_.dir/PrimitiveRenderer.cpp.o CMakeFiles/2DGameEngine_.dir/Player.cpp.o CMakeFiles/2DGameEngine_.dir/Logger.cpp.o CMakeFiles/2DGameEngine_.dir/TileMap.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX26.1.sdk
   LINK_LIBRARIES = -Wl,-rpath,"/Users/alihamdy/Desktop/2DGameEngine /2DGameEngine/raylib/src"  -lraylib  -framework Cocoa  -framework IOKit  -framework CoreVideo
   LINK_PATH = -L"/Users/alihamdy/Desktop/2DGameEngine /2DGameEngine/raylib/src"
