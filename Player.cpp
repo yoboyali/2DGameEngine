@@ -6,11 +6,14 @@
 #include "raymath.h"
 #include <cmath>
 #include "PrimitiveRenderer.h"
+#include <iostream>
 #define PlayerWidth 48
 #define PlayerHeight 64
 #define PlayerSpeed 5
-#define NumFramePerRow 8
+#define NumFramePerRow 8    
 #define PlayerDrawSize 200
+#define WindowWidth 1200
+#define WindowHeight 800
 
 void Player::InitializeVariables()
 {
@@ -21,7 +24,7 @@ void Player::InitializeVariables()
     Death_texture = LoadTexture("Sprites/death_Gun.png");
     RepeatingAnimations = (Animation){.first = 0 , .last = 7 , .current = 0 , .speed = 0.1 , .durationLeft = 0.1     , .type = Repeating};
     OneShotAnimation =(Animation){.first = 0 , .last = 7 , .current = 0 , .speed = 0.1 , .durationLeft = 0.1 , .type = OneShot};
-    PlayerDirection = Down;
+    PlayerDirection = Right;
     background =LoadTexture("/Users/alihamdy/room1.png");
 
 }
@@ -90,11 +93,31 @@ else{return TopRight;}
 
 void Player::ProjectileSpawn(Vector2 input)
 {
-
+    for (int i = 0 ; i < MaxBullets ; i++) {
+        if (!bullets[i].active) {
+            bullets[i].active = true;
+            bullets[i].position = (Vector2){PositionX + 100 , PositionY + 100};
+            bullets[i].velocity = Vector2Scale(input , 10.0);
+            BulletsLeft--;
+            break;
+        }
+    }
 }
 
 void Player::UpdateBullets()
 {
+    for (int i = 0 ; i < MaxBullets ; i++) {
+        if (bullets[i].active) {
+            bullets[i].position.x += bullets[i].velocity.x;
+            bullets[i].position.y += bullets[i].velocity.y;
+            //DrawRectangleV(bullets[i].position , (Vector2){5,5} , YELLOW);
+            DrawPixel(bullets[i].position.x , bullets[i].position.y , YELLOW);
+        }
+        if (bullets[i].position.x < 0 || bullets[i].position.x > WindowWidth || bullets[i].position.y < 0 || bullets[i].position.y > WindowHeight) {
+            bullets[i].active = false;
+            BulletsLeft++;
+        }
+    }
 }
 
 void Player::Draw()
@@ -118,6 +141,7 @@ void Player::Draw()
     if (dead) {
         DrawTexturePro(Death_texture ,animation_frame(&OneShotAnimation  , PlayerDirection) ,{PositionX , PositionY , PlayerDrawSize  , PlayerDrawSize } , {0,0} , 0.0 ,WHITE);
     }
+    std::cout<<BulletsLeft<<std::endl;
    //;
 }
 
@@ -125,6 +149,7 @@ void Player::update()
 {
     Animation_update(&RepeatingAnimations);
     Animation_update(&OneShotAnimation);
+    UpdateBullets();
 
 }
 
@@ -136,13 +161,19 @@ Shooting = shooting;
     if(PlayerInput.x != 0 || PlayerInput.y != 0){
         walking = true;
         PlayerDirection = calculateDirection(PlayerInput);
+        LastPlayerDirection = Vector2Normalize(PlayerInput);
         PositionX += PlayerInput.x * PlayerSpeed;
         PositionY += PlayerInput.y * PlayerSpeed;
         PositionX = Clamp(PositionX , -70 , 1130 - PlayerWidth);
         PositionY = Clamp(PositionY , -70 , 730 - PlayerHeight);
     }
+
     else {
         walking = false;
+    }
+    if (shooting) {
+        Vector2 ShootingDirection = (Vector2Length(PlayerInput) == 0) ? LastPlayerDirection : Vector2Normalize(PlayerInput);
+        ProjectileSpawn(ShootingDirection);
     }
 }
 

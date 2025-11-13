@@ -43,11 +43,14 @@ typedef enum Direction
     Right = 384,
     Left = 448,
 }Direction;
+
 //Variables
     float temp = 0.0;
     float PositionX = 600;
     float PositionY = 400;
+    int BulletsLeft = MaxBullets;
     Vector2 PlayerInput = {0};
+    Vector2 LastPlayerDirection = {1.0 , 0.0};
     Texture2D player_idle_texture;
     Texture2D player_walk_texture;
     Texture2D player_shoot_texture;
@@ -56,7 +59,7 @@ typedef enum Direction
     Texture2D background;
     Animation RepeatingAnimations;
     Animation OneShotAnimation;
-    Direction PlayerDirection = Down;
+    Direction PlayerDirection = Right;
     bool walking , Shooting , dead;
     bullet bullets[MaxBullets] ={0};
     PrimitiveRenderer PrimDraw;
@@ -70,7 +73,7 @@ typedef enum Direction
     void UpdateBullets();
 
     void update();
-public: Player();
+    public: Player();
         ~Player();
         void Draw();
         void GetInput(Vector2 input , bool shooting);
