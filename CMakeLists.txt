@@ -27,6 +27,8 @@ add_executable(${PROJECT_NAME}
         Logger.h
         TileMap.cpp
         TileMap.h
+        Enemy.cpp
+        Enemy.h
         # add more cpp files here if needed
 )
 

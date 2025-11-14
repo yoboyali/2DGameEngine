@@ -4,7 +4,7 @@
 
 #include "Player.h"
 #include "raymath.h"
-#include <cmath>
+#include "Enemy.h"
 #include "PrimitiveRenderer.h"
 #include <iostream>
 #define PlayerWidth 48
@@ -26,6 +26,8 @@ void Player::InitializeVariables()
     OneShotAnimation =(Animation){.first = 0 , .last = 7 , .current = 0 , .speed = 0.1 , .durationLeft = 0.1 , .type = OneShot};
     PlayerDirection = Right;
     background =LoadTexture("/Users/alihamdy/room1.png");
+    Enem.SetEnemNum(5);
+    Enem.SpawnEnemies();
 
 }
 
@@ -108,14 +110,14 @@ void Player::UpdateBullets()
 {
     for (int i = 0 ; i < MaxBullets ; i++) {
         if (bullets[i].active) {
-            bullets[i].position.x += bullets[i].velocity.x;
-            bullets[i].position.y += bullets[i].velocity.y;
-            //DrawRectangleV(bullets[i].position , (Vector2){5,5} , YELLOW);
+            bullets[i].position.x += bullets[i].velocity.x * 1.5;
+            bullets[i].position.y += bullets[i].velocity.y * 1.5;
             DrawPixel(bullets[i].position.x , bullets[i].position.y , YELLOW);
+
         }
         if (bullets[i].position.x < 0 || bullets[i].position.x > WindowWidth || bullets[i].position.y < 0 || bullets[i].position.y > WindowHeight) {
             bullets[i].active = false;
-            BulletsLeft++;
+            //BulletsLeft++;
         }
     }
 }
@@ -141,6 +143,7 @@ void Player::Draw()
     if (dead) {
         DrawTexturePro(Death_texture ,animation_frame(&OneShotAnimation  , PlayerDirection) ,{PositionX , PositionY , PlayerDrawSize  , PlayerDrawSize } , {0,0} , 0.0 ,WHITE);
     }
+    Enem.Update((Vector2){PositionX , PositionY});
     std::cout<<BulletsLeft<<std::endl;
    //;
 }
@@ -150,6 +153,7 @@ void Player::update()
     Animation_update(&RepeatingAnimations);
     Animation_update(&OneShotAnimation);
     UpdateBullets();
+
 
 }
 

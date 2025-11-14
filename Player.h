@@ -5,6 +5,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "raylib.h"
+#include "Enemy.h"
 #include "PrimitiveRenderer.h"
 #define MaxBullets 100
 
@@ -62,6 +63,7 @@ typedef enum Direction
     Direction PlayerDirection = Right;
     bool walking , Shooting , dead;
     bullet bullets[MaxBullets] ={0};
+    Enemy Enem;
     PrimitiveRenderer PrimDraw;
 //Functions
     void InitializeVariables();
