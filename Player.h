@@ -73,6 +73,7 @@ typedef enum Direction
     Direction calculateDirection(Vector2 input);
     void ProjectileSpawn(Vector2 input);
     void UpdateBullets();
+    void FindGuntip(Texture2D texture , int x , int y);
 
     void update();
     public: Player();

@@ -6,7 +6,6 @@
 #include "raymath.h"
 #include "Enemy.h"
 #include "PrimitiveRenderer.h"
-#include <iostream>
 #define PlayerWidth 48
 #define PlayerHeight 64
 #define PlayerSpeed 5
@@ -122,6 +121,10 @@ void Player::UpdateBullets()
     }
 }
 
+void Player::FindGuntip(Texture2D texture , int x , int y)
+{
+}
+
 void Player::Draw()
 {
     update();
@@ -144,7 +147,7 @@ void Player::Draw()
         DrawTexturePro(Death_texture ,animation_frame(&OneShotAnimation  , PlayerDirection) ,{PositionX , PositionY , PlayerDrawSize  , PlayerDrawSize } , {0,0} , 0.0 ,WHITE);
     }
     Enem.Update((Vector2){PositionX , PositionY});
-    std::cout<<BulletsLeft<<std::endl;
+    //std::cout<<BulletsLeft<<std::endl;
    //;
 }
 

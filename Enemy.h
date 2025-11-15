@@ -5,6 +5,7 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 #include "raylib.h"
+#include "PrimitiveRenderer.h"
 #define MAXENEMIES 50
 
 class Enemy {
@@ -20,6 +21,7 @@ typedef struct Enem
 };
 Vector2 PlayerPos;
 Enem Enemies[MAXENEMIES];
+PrimitiveRenderer Drawer;
 int NumOfEnem;
 void SpawnEnemies();
 void Update(Vector2 Pos);

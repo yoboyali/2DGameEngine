@@ -7,6 +7,9 @@
 #include "math.h"
 #include "raylib.h"
 
+//Open and closed polyline , set of points or  linesegment
+//closed polygon same as polyline and a polygon chain that breaks
+//filling using border and and flood
 PrimitiveRenderer::PrimitiveRenderer()
 {
     initVariables();
@@ -17,7 +20,6 @@ PrimitiveRenderer::~PrimitiveRenderer()
     EndDrawing();
     CloseWindow();
 }
-
 void PrimitiveRenderer::primDraw(int x0 , int x1 , int y0 , int y1)
 {
     float x = x1 - x0;
@@ -30,6 +32,7 @@ void PrimitiveRenderer::primDraw(int x0 , int x1 , int y0 , int y1)
         std::cout<<i<<":"<<round(temp)<<std::endl;
     }
 }
+
 
 void PrimitiveRenderer::primDrawCircle(int x, int y, int Radius)
 {
@@ -68,6 +71,36 @@ void PrimitiveRenderer::primDrawEllipse(int x, int y, int Rx, int Ry)
         DrawPixel(X , Y , WHITE);
 
     }
+}
+
+void PrimitiveRenderer::primDrawPolyline(std::vector<Vector2> Side, Color color)
+{
+    for (int i = 0 ; i < Side.size() ; i++) {
+        int j = (i + 1) % Side.size();
+        DrawLine(Side[i].x , Side[i].y , Side[j].x , Side[j] .y, color);
+    }
+}
+
+void PrimitiveRenderer::primDrawPolygon(Vector2 center, int sides, float radius, float rotation, Color EdgeColor,Color FillColor)
+{
+    if (sides < 3){sides = 3;}
+    float centralangle = DEG2RAD * rotation;
+    float anglestep = 360/(float)sides*DEG2RAD;
+    float x , y , x1 , y2;
+    for (int i = 0 ; i < sides ; i++) {
+        x = center.x + cosf(centralangle)*radius;
+        y = center.y + sinf(centralangle) * radius;
+        x1= center.x + cosf(centralangle + anglestep) * radius;
+        y2 = center.y + sinf(centralangle + anglestep) * radius;
+        DrawLine(x , y , x1 , y2 , EdgeColor);
+        centralangle += anglestep;
+    }
+
+}
+
+int PrimitiveRenderer::Floodfill(int x, int y, Color FillColor, Color EdgeColor)
+{   
+    return 0;
 }
 
 void PrimitiveRenderer::initVariables()

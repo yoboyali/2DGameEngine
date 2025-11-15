@@ -33,17 +33,14 @@ void Enemy::Update(Vector2 Pos)
 
             Vector2 dir = Vector2Normalize(Vector2Subtract(PlayerPos , Enemies[i].Position));
             Enemies[i].Position = Vector2Add(Enemies[i].Position , Vector2Scale(dir , 1));
-            DrawRectangle(Enemies[i].Position.x , Enemies[i].Position.y ,50 , 50 , RED);
-            DrawPixel(Enemies[i].Position.x , Enemies[i].Position.y , BLUE);
+            Drawer.primDrawCircle(Enemies[i].Position.x , Enemies[i].Position.y , 10);
         }
     }
 }
 
 void Enemy::Draw()
 {
-
 }
-
 void Enemy::SetEnemNum(int x)
 {
     NumOfEnem = x;

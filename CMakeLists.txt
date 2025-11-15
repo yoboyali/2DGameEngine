@@ -23,8 +23,6 @@ add_executable(${PROJECT_NAME}
         PrimitiveRenderer.h
         Player.cpp
         Player.h
-        Logger.cpp
-        Logger.h
         TileMap.cpp
         TileMap.h
         Enemy.cpp

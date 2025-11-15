@@ -76,13 +76,12 @@ void Engine::render()
 {
     BeginDrawing();
     ClearBackground(BLACK);
-    //DrawRectangle(posx , posy , 30 , 30 , BLACK);
-    //draw.primDraw(0 , 150 , 2 ,150 );
-   // draw.primDrawCirlce(posx , posy , 30);
+    std::vector<Vector2> x = {{100 , 100} , {100 , 200} , {200 , 100} , {200 , 200}};
+    draw.primDrawPolyline( x, WHITE);
+    draw.primDrawPolygon({100 , 100}, 4 , 30 , 90 , WHITE , BLACK);
+    DrawPolyLines({200 , 200} , 4 , 30 ,  90 , WHITE);
     FemaleAdventurer->Draw();
     DrawText("Health:" , 10 , 750 , 35 , RED);
 
-    //draw.primDrawElipse(posx , posy , 50 , 100);
-   // DrawLine(0 , 2 , 100 , 100 , BLACK );
     EndDrawing();
 }
