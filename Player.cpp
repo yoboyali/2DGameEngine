@@ -6,6 +6,7 @@
 #include "raymath.h"
 #include "Enemy.h"
 #include "PrimitiveRenderer.h"
+#include <iostream>
 #define PlayerWidth 48
 #define PlayerHeight 64
 #define PlayerSpeed 5
@@ -25,8 +26,9 @@ void Player::InitializeVariables()
     OneShotAnimation =(Animation){.first = 0 , .last = 7 , .current = 0 , .speed = 0.1 , .durationLeft = 0.1 , .type = OneShot};
     PlayerDirection = Right;
     background =LoadTexture("/Users/alihamdy/room1.png");
-    Enem.SetEnemNum(5);
+    Enem.SetEnemNum(1);
     Enem.SpawnEnemies();
+    Player::HealthBar = 100;
 
 }
 
@@ -125,12 +127,17 @@ void Player::FindGuntip(Texture2D texture , int x , int y)
 {
 }
 
+void Player::TakeDamage(int x)
+{
+    HealthBar -= x;
+}
+
 void Player::Draw()
 {
     update();
    //
     DrawTexturePro(background , {0 , 0 ,480 ,320} ,{0 ,0, 1200 , 800} , {0,0} , 0.0 , WHITE);
-    PrimDraw.primDrawCircle(PositionX + 100 , PositionY + 100 , 30);
+    PrimDraw.primDrawCircle(PositionX + 100 , PositionY + 100 , 40);
     if (Shooting && !walking &&!dead) {
         DrawTexturePro(player_shoot_texture ,animation_frame(&RepeatingAnimations , PlayerDirection) ,{PositionX , PositionY , PlayerDrawSize , PlayerDrawSize } , {0,0} , 0.0 ,WHITE);
     }
@@ -147,6 +154,9 @@ void Player::Draw()
         DrawTexturePro(Death_texture ,animation_frame(&OneShotAnimation  , PlayerDirection) ,{PositionX , PositionY , PlayerDrawSize  , PlayerDrawSize } , {0,0} , 0.0 ,WHITE);
     }
     Enem.Update((Vector2){PositionX , PositionY});
+    DrawText("Health:", 10 , 750 , 35 , RED);
+    std::cout<<HealthBar<<std::endl;
+
     //std::cout<<BulletsLeft<<std::endl;
    //;
 }

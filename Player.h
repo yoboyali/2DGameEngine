@@ -50,6 +50,7 @@ typedef enum Direction
     float PositionX = 600;
     float PositionY = 400;
     int BulletsLeft = MaxBullets;
+    int HealthBar;
     Vector2 PlayerInput = {0};
     Vector2 LastPlayerDirection = {1.0 , 0.0};
     Texture2D player_idle_texture;
@@ -74,12 +75,13 @@ typedef enum Direction
     void ProjectileSpawn(Vector2 input);
     void UpdateBullets();
     void FindGuntip(Texture2D texture , int x , int y);
-
     void update();
     public: Player();
         ~Player();
+        void TakeDamage(int x);
         void Draw();
         void GetInput(Vector2 input , bool shooting);
+
 };
 
 

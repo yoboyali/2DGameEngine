@@ -99,7 +99,7 @@ void PrimitiveRenderer::primDrawPolygon(Vector2 center, int sides, float radius,
 }
 
 int PrimitiveRenderer::Floodfill(int x, int y, Color FillColor, Color EdgeColor)
-{   
+{
     return 0;
 }
 

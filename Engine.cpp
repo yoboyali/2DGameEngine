@@ -4,7 +4,6 @@
 
 #include "Engine.h"
 #include "PrimitiveRenderer.h"
-#include "Player.h"
 #include <iostream>
 #define FrameRate 60
 #define WindowWidth 1200
@@ -81,7 +80,6 @@ void Engine::render()
     draw.primDrawPolygon({100 , 100}, 4 , 30 , 90 , WHITE , BLACK);
     DrawPolyLines({200 , 200} , 4 , 30 ,  90 , WHITE);
     FemaleAdventurer->Draw();
-    DrawText("Health:" , 10 , 750 , 35 , RED);
 
     EndDrawing();
 }
