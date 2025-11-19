@@ -31,8 +31,8 @@ typedef enum Direction
 {
     Down = 0,
     Up = 26,
-    Left = 48,
-    Right = 72,
+    Left = 56,
+    Right = 80,
 }Direction;
 typedef struct Enems
 {
@@ -42,6 +42,7 @@ typedef struct Enems
 }Enem;
 
 Vector2 PlayerPos;
+Vector2 BulletPos;
 Enem Enemies[MAXENEMIES];
 PrimitiveRenderer Drawer;
 Animation RepeatingAnimation;
@@ -49,15 +50,16 @@ Animation OneshotAnimation;
 Direction EnemyDirection = Down;
 Texture2D EnemyTexture;
 bool walking = true;
+bool Intersecting;
 int NumOfEnem;
 void SpawnEnemies();
 void Update(Vector2 Pos);
 void AnimationUpdate(Animation *self);
-Rectangle animation_frame(Animation *self);
-Direction calculateDirection();
-bool Isintersecting(Vector2 Playerpos , Vector2 Enemypos);
+Rectangle animation_frame(Animation *self , Direction dir);
+Direction calculateDirection(Vector2 Coordinates);
+bool Isintersecting(Vector2 Playerpos , Vector2 Enemypos , int R1 , int R2);
 void Draw(int i);
-public: void SetEnemNum(int x);
+public: void SetEnemNum(int x , Vector2 bullet);
 
 };
 

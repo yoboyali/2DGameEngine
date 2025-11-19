@@ -25,8 +25,8 @@ void Player::InitializeVariables()
     RepeatingAnimations = (Animation){.first = 0 , .last = 7 , .current = 0 , .speed = 0.1 , .durationLeft = 0.1     , .type = Repeating};
     OneShotAnimation =(Animation){.first = 0 , .last = 7 , .current = 0 , .speed = 0.1 , .durationLeft = 0.1 , .type = OneShot};
     PlayerDirection = Right;
-    background =LoadTexture("/Users/alihamdy/room1.png");
-    Enem.SetEnemNum(1);
+    background =LoadTexture("Sprites/room1.png");
+    Enem.SetEnemNum(10 , {0,0});
     Enem.SpawnEnemies();
     Player::HealthBar = 100;
 
@@ -113,7 +113,9 @@ void Player::UpdateBullets()
         if (bullets[i].active) {
             bullets[i].position.x += bullets[i].velocity.x * 1.5;
             bullets[i].position.y += bullets[i].velocity.y * 1.5;
+            Enem.SetEnemNum(10 , bullets[i].position);
             DrawPixel(bullets[i].position.x , bullets[i].position.y , YELLOW);
+
 
         }
         if (bullets[i].position.x < 0 || bullets[i].position.x > WindowWidth || bullets[i].position.y < 0 || bullets[i].position.y > WindowHeight) {
@@ -134,9 +136,8 @@ void Player::TakeDamage(int x)
 
 void Player::Draw()
 {
-    update();
-   //
     DrawTexturePro(background , {0 , 0 ,480 ,320} ,{0 ,0, 1200 , 800} , {0,0} , 0.0 , WHITE);
+    update();
     PrimDraw.primDrawCircle(PositionX + 100 , PositionY + 100 , 40);
     if (Shooting && !walking &&!dead) {
         DrawTexturePro(player_shoot_texture ,animation_frame(&RepeatingAnimations , PlayerDirection) ,{PositionX , PositionY , PlayerDrawSize , PlayerDrawSize } , {0,0} , 0.0 ,WHITE);
@@ -155,10 +156,7 @@ void Player::Draw()
     }
     Enem.Update((Vector2){PositionX , PositionY});
     DrawText("Health:", 10 , 750 , 35 , RED);
-    std::cout<<HealthBar<<std::endl;
 
-    //std::cout<<BulletsLeft<<std::endl;
-   //;
 }
 
 void Player::update()
@@ -175,14 +173,15 @@ void Player::GetInput(Vector2 input , bool shooting)
 PlayerInput.x = input.x;
 PlayerInput.y = input.y;
 Shooting = shooting;
-    if(PlayerInput.x != 0 || PlayerInput.y != 0){
+   // std::cout<<Enem.Intersecting<<std::endl;
+    if(PlayerInput.x != 0 || PlayerInput.y != 0 && !Enem.Intersecting){
         walking = true;
         PlayerDirection = calculateDirection(PlayerInput);
         LastPlayerDirection = Vector2Normalize(PlayerInput);
         PositionX += PlayerInput.x * PlayerSpeed;
         PositionY += PlayerInput.y * PlayerSpeed;
-        PositionX = Clamp(PositionX , -70 , 1130 - PlayerWidth);
-        PositionY = Clamp(PositionY , -70 , 730 - PlayerHeight);
+        PositionX = Clamp(PositionX , 100 , 900);
+        PositionY = Clamp(PositionY , 22 , 580 );
     }
 
     else {

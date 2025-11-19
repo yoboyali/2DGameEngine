@@ -35,9 +35,5 @@ int main(void)
             engine.Update();
             engine.render();
         }
-
         return 0;
-
-
-
 }

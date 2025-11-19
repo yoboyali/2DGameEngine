@@ -4,6 +4,7 @@
 
 #include "Engine.h"
 #include "PrimitiveRenderer.h"
+#include "raylib.h"
 #include <iostream>
 #define FrameRate 60
 #define WindowWidth 1200
@@ -75,11 +76,12 @@ void Engine::render()
 {
     BeginDrawing();
     ClearBackground(BLACK);
-    std::vector<Vector2> x = {{100 , 100} , {100 , 200} , {200 , 100} , {200 , 200}};
-    draw.primDrawPolyline( x, WHITE);
-    draw.primDrawPolygon({100 , 100}, 4 , 30 , 90 , WHITE , BLACK);
-    DrawPolyLines({200 , 200} , 4 , 30 ,  90 , WHITE);
+    std::vector<Vector2> x = {{160 , 80} , {160 , 720} , {1045 , 720} , {1045 , 80}};
     FemaleAdventurer->Draw();
-
+    draw.primDrawPolyline( x, WHITE);
+    //draw.primDrawCircle(500 , 500 , 100);
+    //draw.Floodfill(500 , 500 , RED , WHITE);
+    draw.EmptyBuffer();
     EndDrawing();
+
 }

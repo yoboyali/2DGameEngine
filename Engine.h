@@ -25,6 +25,7 @@ public:
     int posy;
     bool shooting = false;
     Vector2 input = {0};
+    Image screen ;
     PrimitiveRenderer draw;
     Player* FemaleAdventurer;
 };
